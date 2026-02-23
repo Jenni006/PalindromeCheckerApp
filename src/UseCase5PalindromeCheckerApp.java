@@ -1,25 +1,27 @@
 import java.util.Scanner;
+import java.util.Stack;
 
-public class UseCase4PalindromeCheckerApp {
-    public static void main(String[] args) {
+public class UseCase5PalindromeCheckerApp {
+    public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a string : ");
         String input = scanner.nextLine();
         String cleanedS = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        char [] chars = cleanedS.toCharArray();
-        int start = 0;
-        int end = chars.length-1;
+        Stack <Character> stack = new Stack<>();
+
+        for (char c : cleanedS.toCharArray()) {
+            stack.push(c);
+        }
+
         boolean isPalindrome = true;
 
-        while(start<end){
-            if(chars[start]!=chars[end]){
-                isPalindrome = false;
-            }else{
-                start++;
-                end--;
+        for (char c : cleanedS.toCharArray()) {
+            if(stack.pop()!=c){
+                isPalindrome=false;
             }
         }
+
         if(isPalindrome){
             System.out.println("Is it a palindrome ? "+isPalindrome);
         }else{
