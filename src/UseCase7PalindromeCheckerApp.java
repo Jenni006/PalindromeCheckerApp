@@ -1,9 +1,6 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class UseCase6PalindromeCheckerApp {
+public class UseCase7PalindromeCheckerApp {
     public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
 
@@ -11,26 +8,19 @@ public class UseCase6PalindromeCheckerApp {
         String input = scanner.nextLine();
         String cleanedS = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        Queue <Character> queue = new LinkedList<>();
+        Deque <Character> deque = new ArrayDeque<>();
 
         for (char c : cleanedS.toCharArray()) {
-            queue.add(c);
-        }
-
-        Stack <Character> stack = new Stack<>();
-
-        for (char c : cleanedS.toCharArray()) {
-            stack.push(c);
+            deque.add(c);
         }
 
         boolean isPalindrome = true;
 
-        for (char c : cleanedS.toCharArray()) {
-            if(stack.pop()!=queue.remove()){
+        while(deque.size()>1){
+            if(deque.removeFirst()!= deque.removeLast()){
                 isPalindrome=false;
             }
         }
-
         if(isPalindrome){
             System.out.println("Is it a palindrome ? "+isPalindrome);
         }else{
