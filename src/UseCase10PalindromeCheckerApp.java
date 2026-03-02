@@ -9,7 +9,6 @@ public class UseCase10PalindromeCheckerApp {
                 isPlanidrome = false;
             }
         }
-
         if (isPlanidrome) {
             System.out.println("The string is a palindrome.");
         } else {
